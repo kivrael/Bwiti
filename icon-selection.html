@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expanded Icon Selection for Sacred Forest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .icon-card {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .icon-card:hover {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+            border-color: #2c4a2c;
+        }
+        .icon-card svg {
+            width: 60px;
+            height: 60px;
+            stroke: #2c4a2c;
+            stroke-width: 1.5;
+            fill: none;
+            margin-bottom: 10px;
+        }
+        .category {
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+            font-weight: bold;
+            color: #1a2f1a;
+        }
+        .icon-card p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Expanded Icon Selection for Sacred Forest Services</h1>
+    
+    <h2 class="category">Ceremony & Healing Icons</h2>
+    <div class="icon-grid">
+        <!-- Iboga Ceremonies -->
+        <div class="icon-card" data-service="iboga">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 3c-3.5 0-6.5 2.5-6.5 6s3 6 6.5 6 6.5-2.5 6.5-6-3-6-6.5-6z"/>
+                <path d="M12 15c-4.5 0-8 3-8 6h16c0-3-3.5-6-8-6z"/>
+            </svg>
+            <p>Spiritual Connection</p>
+        </div>
+        
+        <div class="icon-card" data-service="iboga-alt">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 3L3 9l9 6 9-6z"/>
+                <path d="M3 15l9 6 9-6"/>
+                <path d="M3 9l9 6 9-6"/>
+            </svg>
+            <p>Sacred Geometry</p>
+        </div>
+
+        <!-- Healing Baths -->
+        <div class="icon-card" data-service="bath">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M17 14h-4V8c0-1.1-.9-2-2-2s-2 .9-2 2v8l-3.5-2.5-.7.7 4.5 3.5H17v-3zm2 2H3v2h16v-2z"/>
+                <path d="M7 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
+            </svg>
+            <p>Purification Waves</p>
+        </div>
+
+        <div class="icon-card" data-service="bath-alt">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 4a4 4 0 0 1 4 4c0 2-1.5 3.5-3 5h-2c-1.5-1.5-3-3-3-5a4 4 0 0 1 4-4z"/>
+                <path d="M4 14c0 3.3 2.7 6 6 6h4c3.3 0 6-2.7 6-6v-2H4v2z"/>
+            </svg>
+            <p>Healing Vessel</p>
+        </div>
+
+        <!-- Traditional Rituals -->
+        <div class="icon-card" data-service="ritual">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 6v6l4 4"/>
+                <path d="M16 16l-4-4"/>
+            </svg>
+            <p>Ritual Cycles</p>
+        </div>
+
+        <div class="icon-card" data-service="ritual-alt">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z"/>
+                <path d="M22 12h-4"/>
+                <path d="M12 12V6"/>
+                <path d="M12 12l4 4"/>
+            </svg>
+            <p>Sacred Time</p>
+        </div>
+    </div>
+
+    <h2 class="category">Wisdom & Knowledge Icons</h2>
+    <div class="icon-grid">
+        <!-- Wisdom Teachings -->
+        <div class="icon-card" data-service="wisdom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 3L1 9l11 6 11-6z"/>
+                <path d="M12 13L1 9l11 6 11-6"/>
+                <path d="M12 13v6"/>
+                <path d="M12 19c-2 0-4-1-4-3v-3"/>
+            </svg>
+            <p>Knowledge Pyramid</p>
+        </div>
+
+        <div class="icon-card" data-service="wisdom-alt">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v8"/>
+                <path d="M8 12h8"/>
+                <circle cx="12" cy="12" r="2"/>
+            </svg>
+            <p>Centered Wisdom</p>
+        </div>
+
+        <!-- Sacred Chants -->
+        <div class="icon-card" data-service="chants">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+            </svg>
+            <p>Harmonic Waves</p>
+        </div>
+
+        <div class="icon-card" data-service="chants-alt">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M3 12h4l3 6 4-12 3 6h4"/>
+            </svg>
+            <p>Sound Vibrations</p>
+        </div>
+    </div>
+
+    <h2 class="category">Movement & Spiritual Dance Icons</h2>
+    <div class="icon-grid">
+        <!-- Ritual Dances -->
+        <div class="icon-card" data-service="dance">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>
+                <path d="M8 10l-3 8h14l-3-8"/>
+                <path d="M9 18v-6m6 6v-6"/>
+            </svg>
+            <p>Sacred Movement</p>
+        </div>
+
+        <div class="icon-card" data-service="dance-alt">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="4" r="2"/>
+                <path d="M8 14l-2 6h12l-2-6"/>
+                <path d="M12 10v8"/>
+                <path d="M9 20h6"/>
+            </svg>
+            <p>Spiritual Rhythm</p>
+        </div>
+
+        <!-- Additional Spiritual Icons -->
+        <div class="icon-card" data-service="spirit">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 3c-2.5 0-4.5 2-4.5 4.5S9.5 12 12 12s4.5-2 4.5-4.5S14.5 3 12 3z"/>
+                <path d="M12 12c-4 0-7.5 2.5-7.5 6.5S8 21 12 21s7.5-2.5 7.5-6.5S16 12 12 12z"/>
+            </svg>
+            <p>Inner Journey</p>
+        </div>
+
+        <div class="icon-card" data-service="connection">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M8 12h8"/>
+                <path d="M12 8v8"/>
+            </svg>
+            <p>Sacred Connections</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.icon-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const service = card.getAttribute('data-service');
+                const svgHtml = card.querySelector('svg').outerHTML;
+                window.parent.postMessage({
+                    type: 'icon-selected', 
+                    service: service, 
+                    svg: svgHtml
+                }, '*');
+                
+                // Highlight selected icon
+                document.querySelectorAll('.icon-card').forEach(c => c.style.border = '1px solid #ddd');
+                card.style.border = '2px solid #2c4a2c';
+            });
+        });
+    </script>
+</body>
+</html>

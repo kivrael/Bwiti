@@ -20,13 +20,34 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #1a2f1a 0%, #2c4a2c 100%);
+            background: transparent;
             color: white;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: transform 0.5s ease, opacity 0.5s ease, visibility 0.5s;
+        }
+
+        .hero {
+            padding-top: 80px; /* Height of header */
+            margin-top: -80px; /* Counteract header height */
+        }
+
+        body {
+            padding-top: 80px; /* Compensate for absolute header */
+        }
+
+        header.fixed {
+            position: fixed;
+            background: 
+                linear-gradient(rgba(26, 47, 26, 0.7), rgba(44, 74, 44, 0.8)),
+                url('jungle-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             backdrop-filter: blur(10px);
         }
 
@@ -358,7 +379,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            position: relative;
+            color: white;
+        }
+
+        .service-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .service-card h3 {
@@ -370,9 +402,11 @@
         /* Traditions Section */
         .traditions {
             background: 
-                radial-gradient(ellipse at top, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at bottom left, rgba(26, 47, 26, 0.9) 0%, rgba(44, 74, 44, 0.95) 70%),
-                linear-gradient(135deg, #1a2f1a 0%, #2c4a2c 100%);
+                linear-gradient(rgba(26, 47, 26, 0.6), rgba(26, 47, 26, 0.7)),
+                url('jungle-background.jpg');
+            background-size: cover, cover;
+            background-blend-mode: multiply;
+            background-position: center, center;
             color: white;
             position: relative;
         }
@@ -385,16 +419,27 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 15% 25%, rgba(212, 175, 55, 0.1) 2px, transparent 2px),
-                radial-gradient(circle at 85% 75%, rgba(212, 175, 55, 0.08) 1px, transparent 1px),
-                radial-gradient(circle at 45% 85%, rgba(244, 241, 234, 0.05) 3px, transparent 3px);
-            background-size: 100px 100px, 150px 150px, 200px 200px;
+                radial-gradient(ellipse at top left, transparent 40%, rgba(212, 175, 55, 0.05) 70%),
+                radial-gradient(ellipse at bottom right, rgba(26, 47, 26, 0.3) 20%, transparent 70%);
             z-index: 1;
         }
 
         .traditions > * {
             position: relative;
             z-index: 2;
+        }
+
+        .traditions::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+            z-index: 1;
         }
 
         .traditions h2 {
@@ -474,8 +519,11 @@
         /* Footer */
         footer {
             background: 
-                linear-gradient(45deg, rgba(26, 47, 26, 0.95) 0%, rgba(44, 74, 44, 0.98) 100%),
-                radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)),
+                url('jungle-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
             color: white;
             text-align: center;
             padding: 2rem;
@@ -489,20 +537,20 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 10px,
-                rgba(212, 175, 55, 0.05) 10px,
-                rgba(212, 175, 55, 0.05) 11px
-            );
+            background: 
+                radial-gradient(ellipse at top left, transparent 40%, rgba(212, 175, 55, 0.05) 70%),
+                radial-gradient(ellipse at bottom right, rgba(26, 47, 26, 0.3) 20%, transparent 70%);
+            z-index: 1;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-center,
-            .language-switcher {
+            .nav-center {
                 display: none;
+            }
+            
+            .language-switcher {
+                display: flex;
             }
             
             .hero-content h1 {
@@ -511,7 +559,8 @@
             
             .about-grid,
             .master-content,
-            .contact-grid {
+            .contact-grid,
+            .traditions-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
@@ -533,8 +582,23 @@
             }
         }
 
+        @keyframes slowHeaderAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .fade-in {
             animation: fadeInUp 0.8s ease-out;
+        }
+
+        header.appear {
+            animation: slowHeaderAppear 0.5s ease-out forwards;
         }
     </style>
 </head>
@@ -598,32 +662,34 @@
         <h2>Sacred Ceremonies & Healings</h2>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon">🌿</div>
+                <div class="service-icon"><img src="racine.png" alt="Iboga Ceremonies" style="width: 90%; height: 90%; object-fit: contain; position: absolute; top: 50%; left: 50%; transform-origin: center; transform: translate(-50%, -50%);"/></div>
                 <h3>Iboga Ceremonies</h3>
                 <p>Experience the profound healing power of sacred Iboga in traditional ceremonial settings, guided by authentic Bwiti protocols and ancestral wisdom.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🛁</div>
+                <div class="service-icon">
+                    <img src="waterfall.png" alt="Healing Baths Waterfall" style="width: calc(100% - 16px); height: calc(100% - 16px); object-fit: cover; border-radius: 50%; position: absolute; top: 8px; left: 8px;"/>
+                </div>
                 <h3>Healing Baths</h3>
                 <p>Purifying ritual baths using sacred herbs and traditional preparations to cleanse body, mind, and spirit before and after ceremonies.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🎭</div>
+                <div class="service-icon"><img src="torch.png" alt="Traditional Rituals" style="width: 90%; height: 90%; object-fit: contain; transform: rotate(35deg); background: transparent; mix-blend-mode: multiply; position: absolute; top: 50%; left: 50%; transform-origin: center; transform: translate(-50%, -50%) rotate(35deg);"/></div>
                 <h3>Traditional Rituals</h3>
                 <p>Participate in authentic Bwiti rituals including initiation ceremonies, blessing rituals, and seasonal celebrations rooted in ancient tradition.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">📚</div>
+                <div class="service-icon" style="overflow: visible; border-radius: 0; background: none;"><img src="heartkey.png" alt="Wisdom Teachings" style="width: 80px; height: 80px; object-fit: contain; position: absolute; top: 50%; left: 50%; transform-origin: center; transform: translate(-50%, -50%); background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; padding: 8px; box-sizing: border-box;"/></div>
                 <h3>Wisdom Teachings</h3>
                 <p>Learn the profound life teachings of Bwiti philosophy, including guidance on living in balance, understanding natural cycles, and spiritual development.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🎵</div>
+                <div class="service-icon"><img src="chant.png" alt="Sacred Chants" style="width: 90%; height: 90%; object-fit: contain; position: absolute; top: 50%; left: 50%; transform-origin: center; transform: translate(-50%, -50%);"/></div>
                 <h3>Sacred Chants</h3>
                 <p>Immerse yourself in traditional Bwiti songs and chants that carry healing frequencies and connect participants to ancestral spirits.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">💃</div>
+                <div class="service-icon"><img src="traditional-dance.png" alt="Ritual Dances" style="width: 90%; height: 90%; object-fit: contain; position: absolute; top: 50%; left: 50%; transform-origin: center; transform: translate(-50%, -50%);"/></div>
                 <h3>Ritual Dances</h3>
                 <p>Learn and participate in sacred dances that express spiritual truths and facilitate deep connection with the divine feminine and masculine energies.</p>
             </div>
@@ -677,7 +743,7 @@
             </div>
             <div class="contact-form">
                 <h3>Send Us a Message</h3>
-                <form>
+                <form action="https://formspree.io/f/mzzvyakk" method="POST">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required>
@@ -801,14 +867,7 @@
         }
 
         // Form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const message = currentLanguage === 'en' 
-                ? 'Thank you for your message. We will connect with you soon to discuss your sacred journey.'
-                : 'Merci pour votre message. Nous vous contacterons bientôt pour discuter de votre voyage sacré.';
-            alert(message);
-        });
-
+        
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
@@ -826,6 +885,26 @@
         // Observe all sections for animations
         document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
+        });
+
+        // Header scroll effect
+        const hero = document.querySelector('.hero');
+        const header = document.querySelector('header');
+        const heroHeight = hero.offsetHeight;
+        let hasAppeared = false;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > heroHeight) {
+                // Completely hide the header
+                header.style.transform = 'translateY(-100%)';
+                header.style.opacity = '0';
+                header.style.visibility = 'hidden';
+            } else {
+                // Restore header visibility
+                header.style.transform = 'translateY(0)';
+                header.style.opacity = '1';
+                header.style.visibility = 'visible';
+            }
         });
     </script>
 </body>

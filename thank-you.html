@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Sacred Forest</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #1a2f1a;
+            color: #f4f1ea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .container {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .redirect-message {
+            font-size: 0.9em;
+            color: #f4f1ea;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You</h1>
+        <p>We have received your message. Our team will review your inquiry and get back to you soon.</p>
+        <p class="redirect-message">You will be redirected to our main page in a few seconds...</p>
+    </div>
+
+    <script>
+        // Redirect to main page after 3 seconds
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 3000);
+    </script>
+</body>
+</html>
