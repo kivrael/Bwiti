@@ -896,7 +896,12 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('section-visible');
+                        // Special handling for traditions section
+                        if (entry.target.classList.contains('traditions')) {
+                            entry.target.classList.add('traditions-visible');
+                        } else {
+                            entry.target.classList.add('section-visible');
+                        }
                         observer.unobserve(entry.target);
                     }
                 });
@@ -917,6 +922,10 @@
         style.textContent = `
             .section-visible {
                 opacity: 1 !important;
+            }
+            .traditions.traditions-visible {
+                opacity: 0.95 !important;
+                transition: opacity 0.3s ease !important;
             }
         `;
         document.head.appendChild(style);
