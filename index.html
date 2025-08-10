@@ -891,17 +891,12 @@
         
         // Intersection Observer for animations
         document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
+            const sections = document.querySelectorAll('.section:not(.traditions)');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Special handling for traditions section
-                        if (entry.target.classList.contains('traditions')) {
-                            entry.target.classList.add('traditions-visible');
-                        } else {
-                            entry.target.classList.add('section-visible');
-                        }
+                        entry.target.classList.add('section-visible');
                         observer.unobserve(entry.target);
                     }
                 });
@@ -922,10 +917,6 @@
         style.textContent = `
             .section-visible {
                 opacity: 1 !important;
-            }
-            .traditions.traditions-visible {
-                opacity: 0.95 !important;
-                transition: opacity 0.3s ease !important;
             }
         `;
         document.head.appendChild(style);
